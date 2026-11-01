@@ -4,13 +4,13 @@
 
 ## Why I built this
 
-Most practice datasets are already clean. Real work isn't. I wanted to practice the whole path: a raw file, cleaning it, building a database, and then getting answers out of it. I also wanted a project that matches the bank and operations roles I'm applying for.
+Most practice datasets are already clean. Real work isn't. I wanted to practice the whole path: a raw file, cleaning it, building a database, and then getting answers out of it. I also wanted a project that felt like a real operational data task rather than a toy exercise.
 
 ## How it went
 
-**1. The raw file.** I started with an Excel export of 5 sheets and 16,093 rows, built to look like data typed in by different branches. It had duplicate rows, dates written four different ways, money stored as text (`$1,234.50`, `USD 1,234.50`, `(250.00)`), names in all capital letters, abbreviations like `Wdl` and `Trf In`, and a few typos in city names.
+**1. The raw file.** I started with an Excel export of 5 sheets and 16,093 rows, built to look like data typed in by different branches. It had duplicate rows, dates written four different ways, missing values, and inconsistent account names.
 
-**2. Cleaning in Excel.** I used formulas like `TRIM`, `PROPER`, `DATEVALUE`, `SUBSTITUTE`, and `INDEX/MATCH` with lookup tables. I removed 156 duplicate rows. Twenty rows could not be fixed, either because the account number didn't exist or the amount was missing. I didn't guess. I moved them into an Exceptions list, which is what I'd want to hand back to whoever owns the data.
+**2. Cleaning in Excel.** I used formulas like `TRIM`, `PROPER`, `DATEVALUE`, `SUBSTITUTE`, and `INDEX/MATCH` with lookup tables. I removed 156 duplicate rows. Twenty rows could not be fixed, either because the source data was missing or the row was internally inconsistent.
 
 **3. The database.** I designed 6 tables (customers, accounts, transactions, loans, loan payments, branches) with primary and foreign keys, plus 3 views.
 
@@ -58,4 +58,8 @@ Excel, MySQL 8.0, MySQL Workbench
 
 ## Screenshots
 
-See the `screenshots` folder for the raw data, the cleaned data, and some query results.
+![MySQL schema overview](screenshots/01-tables.png)
+
+This screenshot shows the `bank_ops` schema with the six tables in MySQL Workbench.
+
+See the `screenshots` folder for additional screenshots of the cleaned data and query outputs.
